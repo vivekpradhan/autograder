@@ -4,6 +4,7 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import os
 from django.conf import settings
+from django.http import HttpResponse
 
 def handle_uploaded_file(filenam):
     with open('/home/vpradhan/dj-bdp/autograder' + filenam, 'r') as f:
