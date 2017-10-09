@@ -1,5 +1,6 @@
 from django import forms
-
-class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=5000000)
-    file = forms.FileField()
+from .models import Submission
+class UploadFileForm(forms.ModelForm):
+    class Meta:
+        model = Submission
+        fields = ('eid', 'document')

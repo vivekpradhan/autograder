@@ -1,3 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <title>Autograder Output</title>   
+    </head>
+    <body>
 <ul>
-        <li>The string is {{inputx}}</li>
+        <li id="EID">The EID is {{EID}}</li>
+        <li>The unique identifier is: 
+              <ul><li id="password">{{random_string}}</li></ul>
+        </li>
+<script>
+  function executeQuery() {
+  var password = $("ul li ul li").text();
+  $.ajax({url: 'http://ec2-54-202-42-162.us-west-2.compute.amazonaws.com:8000/assign5/ajax/password', data:{'password':password}, dataType: 'json', success: function(data){
+         $("#output").replaceWith(data.output);
+
+         }
+
+         }
+        );
+  setTimeout(executeQuery, 5000); // you could choose not to continue on failure...
+}
+
+$(document).ready(function() {
+  // run the first time; all subsequent calls will take care of themselves
+  setTimeout(executeQuery, 500);
+});
+</script>
+       <div id='output'></div>
+
 </ul>
+	</body>
+</html> 

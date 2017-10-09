@@ -5,5 +5,5 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^upload/$', views.upload, name='upload'),
-    url(r'^(?P<inputx>[0-9]+)/results/$', views.results, name='results'),
+    url(r'^ajax/password/', views.results, name='results'),
 ]
